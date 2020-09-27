@@ -1,16 +1,21 @@
-let rect = require('./retangle');
+ const rect = require('./retangle');
 
-function solveRect(l,b) {
+function solveRect(l, b) {
     console.log("Solving for retangle with l = " + l + " and b = " + b)
 
-    if (l <= 0 || b <=0 ){
-        console.log("Tetangle dimensions should be greater than 0")
-    }
-    else {
-        console.log("The area of the retangle is " + rect.area(l,b))
-        console.log("The perimiter of the retangle is " + rect.perimeter(l,b))  
-    }
+    rect(l, b, (err, retangle) => {
+        if (err) {
+            console.log("ERROR: ", err.message);
+        }
+        else {
+            console.log("The area of the retangle with l = " + l +
+                " and b = " + b + " is " + retangle.area())
+            console.log("The perimeter of the retangle with l = " + l +
+                " and b = " + b + " is " + retangle.perimeter())
+        }
+    });
+    console.log("This statment is after de call to rect")
 }
 
-solveRect(2,4)
-solveRect(3,5)
+solveRect(2, 4)
+solveRect(3, 5)
